@@ -24,10 +24,24 @@ void read_file(char const *name, int *op)
     {
         while ((read = readdir(dir)) != NULL)
         {
-            printf("%s ", (*read).d_name);
-            if (op[0] == 1)
+            if ((*read).d_name[0] != '.')
             {
-                printf("\n");
+                printf("%s ", (*read).d_name);
+                if (op[0] == 1)
+                {
+                    printf("\n");
+                }
+            }
+            else
+            {
+                if (op[1] == 1)
+                {
+                    printf("%s ", (*read).d_name);
+                    if (op[0] == 1)
+                    {
+                        printf("\n");
+                    }
+                }
             }
         }
         printf("\n");
