@@ -8,7 +8,6 @@
 int main(int argc, char const *argv[])
 {
 	int op[4] = {0, 0, 0, 0};
-	char **files;
 
 	if (argc == 1)
 	{
