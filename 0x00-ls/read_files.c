@@ -13,7 +13,7 @@ void read_files(int argc, char const *argv[], int *op)
 	{
 		if (argv[i][0] != '-')
 		{
-			read_file(argv[0], argv[i], op);
+			read_file(argv[i], op);
 		}
 		if ((i + 1) != argc)
 			printf("\n");
@@ -22,11 +22,10 @@ void read_files(int argc, char const *argv[], int *op)
 }
 /**
  * read_file - check file names
- * @pname: name of program
  * @name: name of files
  * @op: table of options
  */
-void read_file(char const *pname, char const *name, int *op)
+void read_file( char const *name, int *op)
 {
 	DIR *dir;
 	struct dirent *read;
@@ -59,6 +58,6 @@ void read_file(char const *pname, char const *name, int *op)
 		printf("\n");
 	}
 	if (errno != 0)
-		error_file(pname, name);
+		error_file( name);
 	closedir(dir);
 }

@@ -13,7 +13,7 @@ int _strcmp(char const *s1, char *s2);
 void read_local_file(void);
 void get_options(int argc, char const *argv[], int *options);
 void read_files(int argc, char const *argv[], int *options);
-void read_file(char const *pname, char const *name, int *options);
-void error_file(char const *name, char const *cmd);
+void read_file(char const *name, int *options);
+void error_file(char const *cmd);
 
 #endif
