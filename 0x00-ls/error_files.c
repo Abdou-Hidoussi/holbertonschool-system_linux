@@ -6,5 +6,5 @@
  */
 void error_file(char const *name, char const *cmd)
 {
-	printf("%s : %s : %s\n", name, cmd, strerror(errno));
+	printf("%s : %s : %i\n", name, cmd, errno);
 }
