@@ -29,7 +29,7 @@ void read_file(char const *name, int *op)
 	struct dirent *read;
 
 	dir = opendir(name);
-	if (dir)
+	if (dir != NULL)
 	{
 		read = readdir(dir);
 		while (read != NULL)
@@ -53,8 +53,9 @@ void read_file(char const *name, int *op)
 					}
 				}
 			}
+			read = readdir(dir);
 		}
 		printf("\n");
-		closedir(dir);
 	}
+	closedir(dir);
 }
