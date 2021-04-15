@@ -17,7 +17,7 @@ void read_files(int argc, char const *argv[], int *op)
 		}
 		if ((i + 1) != argc && op[0] == 0)
 			printf("\n");
-		if ((i + 2) < argc && (op[0] == 1 || op[1] == 1))
+		if ((i + 2) < argc && (op[0] == 1 || op[1] == 1 || op[2] == 1))
 			printf("\n");
 		i++;
 	}
@@ -27,7 +27,7 @@ void read_files(int argc, char const *argv[], int *op)
  * @name: name of files
  * @op: table of options
  */
-void read_file( char const *name, int *op)
+void read_file(char const *name, int *op)
 {
 	DIR *dir;
 	struct dirent *read;
@@ -42,25 +42,40 @@ void read_file( char const *name, int *op)
 		{
 			if ((*read).d_name[0] != '.')
 			{
-				printf("%s ", (*read).d_name);
-				if (op[0] == 1)
-					printf("\n");
+				print_file(read, op);
 			}
 			else
 			{
 				if (op[1] == 1)
 				{
-					printf("%s ", (*read).d_name);
-					if (op[0] == 1)
-						printf("\n");
+					print_file(read, op);
+				}
+				else
+				{
+					if (op[2] == 1 && _strcmp((*read).d_name, ".")
+						&& _strcmp((*read).d_name, ".."))
+					{
+						print_file(read, op);
+					}
 				}
 			}
 			read = readdir(dir);
 		}
-		if (op[0] == 0 && op[1] == 0)
+		if (op[0] == 0 && op[1] == 0 && op[2] == 0)
 			printf("\n");
 	}
 	if (errno != 0)
-		error_file( name);
+		error_file(name);
 	closedir(dir);
+}
+/**
+ * print_file - print the file
+ * @read: the file
+ * @op: table of options
+ */
+void print_file(struct dirent *read, int *op)
+{
+	printf("%s ", (*read).d_name);
+	if (op[0] == 1)
+		printf("\n");
 }
