@@ -55,7 +55,8 @@ void read_file( char const *name, int *op)
 			}
 			read = readdir(dir);
 		}
-		printf("\n");
+		if (op[0] != 1)
+			printf("\n");
 	}
 	if (errno != 0)
 		error_file( name);
