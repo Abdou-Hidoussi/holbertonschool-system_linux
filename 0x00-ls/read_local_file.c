@@ -1,17 +1,20 @@
 #include "hls.h"
-
-void read_local_file()
+/**
+ * read_local_file - process local file
+ */
+void read_local_file(void)
 {
-    DIR *dir;
-    struct dirent *read;
+	DIR *dir;
+	struct dirent *read;
 
-    if(dir = opendir("."))
-    {
-        while ((read = readdir(dir)) != NULL)
-        {
-            printf("%s ", (*read).d_name);
-        }
-        printf("\n");
-        closedir(dir);
-    }
+	dir = opendir(".");
+	if (dir)
+	{
+		while ((read = readdir(dir)) != NULL)
+		{
+			printf("%s ", (*read).d_name);
+		}
+		printf("\n");
+		closedir(dir);
+	}
 }

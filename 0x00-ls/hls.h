@@ -1,3 +1,6 @@
+#ifndef SEARCH_ALGOS
+#define SEARCH_ALGOS
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
@@ -6,7 +9,9 @@
 #include <sys/stat.h>
 
 
-void read_local_file();
+void read_local_file(void);
 void get_options(int argc, char const *argv[], int *options);
 void read_files(int argc, char const *argv[], int *options);
 void read_file(char const *name, int *options);
+
+#endif
