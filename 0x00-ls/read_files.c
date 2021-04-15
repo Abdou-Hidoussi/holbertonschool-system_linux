@@ -77,7 +77,7 @@ void print_file(struct dirent *read, int *op)
 {
 	struct stat fileStat;
 	struct group *grp;
-    struct passwd *user;
+	struct passwd *user;
 	char time[24];
 
 	if (op[3] == 1)
@@ -96,8 +96,8 @@ void print_file(struct dirent *read, int *op)
 		printf((fileStat.st_mode & S_IXOTH) ? "x" : "-");
 		user = getpwuid(fileStat.st_uid);
 		grp = getgrgid(fileStat.st_gid);
-		printf(" %lu %s %s %li %s %s\n", fileStat.st_nlink, (*user).pw_name, (*grp).gr_name,
-		(intmax_t)fileStat.st_size, time, (*read).d_name);
+		printf(" %lu %s %s %li %s %s\n", fileStat.st_nlink, (*user).pw_name,
+		(*grp).gr_name, (intmax_t)fileStat.st_size, time, (*read).d_name);
 	}
 	else
 		printf("%s ", (*read).d_name);
