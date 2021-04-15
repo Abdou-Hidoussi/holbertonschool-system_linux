@@ -17,6 +17,8 @@ void read_files(int argc, char const *argv[], int *op)
 		}
 		if ((i + 1) != argc && op[0] == 0)
 			printf("\n");
+		if ((i + 2) < argc && (op[0] == 1 || op[1] == 1))
+			printf("\n");
 		i++;
 	}
 }
@@ -55,7 +57,7 @@ void read_file( char const *name, int *op)
 			}
 			read = readdir(dir);
 		}
-		if (op[0] == 0)
+		if (op[0] == 0 && op[1] == 0)
 			printf("\n");
 	}
 	if (errno != 0)
