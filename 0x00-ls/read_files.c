@@ -34,7 +34,7 @@ void read_file(char const *pname, char const *name, int *op)
 	dir = opendir(name);
 	if (dir != NULL)
 	{
-		if (op[4] == 1)
+		if (op[4] > 2)
 			printf("%s:\n", name);
 		read = readdir(dir);
 		while (read != NULL)

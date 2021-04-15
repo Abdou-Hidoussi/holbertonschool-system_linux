@@ -29,7 +29,7 @@ void get_options(int argc, char const *argv[], int *op)
 		}
 		if (argv[i][0] != '-')
 		{
-			op[4] = 1;
+			op[4] += 1;
 		}
 		i++;
 	}
