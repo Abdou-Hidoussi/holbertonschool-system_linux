@@ -7,7 +7,7 @@
  */
 int main(int argc, char const *argv[])
 {
-	int op[4] = {0, 0, 0, 0};
+	int op[5] = {0, 0, 0, 0, 0};
 
 	if (argc == 1)
 	{

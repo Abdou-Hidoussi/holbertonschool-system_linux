@@ -11,21 +11,25 @@ void get_options(int argc, char const *argv[], int *op)
 
 	while (i < argc)
 	{
-		if (!strcmp(argv[i], "-1"))
+		if (!_strcmp(argv[i], "-1"))
 		{
 			op[0] = 1;
 		}
-		if (!strcmp(argv[i], "-a"))
+		if (!_strcmp(argv[i], "-a"))
 		{
 			op[1] = 1;
 		}
-		if (!strcmp(argv[i], "-A"))
+		if (!_strcmp(argv[i], "-A"))
 		{
 			op[2] = 1;
 		}
-		if (!strcmp(argv[i], "-l"))
+		if (!_strcmp(argv[i], "-l"))
 		{
 			op[3] = 1;
+		}
+		if (argv[i][0] != '-')
+		{
+			op[4] = 1;
 		}
 		i++;
 	}
