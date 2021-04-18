@@ -7,15 +7,25 @@
 void show_dir(Node_t *files, int *op)
 {
 	Node_t *head = files;
+	int mult = 0;
 
 	if (head == NULL)
 	{
 		show_local(".", op);
 	}
 
+	if (head->next)
+		mult = 1;
+
 	while (head != NULL)
 	{
+		if (mult == 1)
+			printf("%s :\n", head->str);
+
 		show_op(head, op);
+
+		if (mult == 1 && head->next != NULL)
+			printf("\n");
 		head = head->next;
 	}
 }
