@@ -12,6 +12,7 @@ void show_dir(Node_t *files, int *op)
 	if (head == NULL)
 	{
 		show_local(".", op);
+		return;
 	}
 
 	if (head->next)
