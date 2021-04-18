@@ -7,6 +7,7 @@
 int _strlen(char const *s)
 {
 	int i = 0;
+
 	if (s != NULL)
 	{
 		while (*s != '\0')
