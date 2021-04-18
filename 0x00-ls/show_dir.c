@@ -20,13 +20,7 @@ void show_dir(Node_t *files, int *op)
 
 	while (head != NULL)
 	{
-		if (mult == 1)
-			printf("%s :\n", head->str);
-
-		show_op(head, op);
-
-		if (mult == 1 && head->next != NULL)
-			printf("\n");
+		show_op(head, op, mult);
 		head = head->next;
 	}
 }
@@ -34,13 +28,18 @@ void show_dir(Node_t *files, int *op)
 *show_op - 0
 *@head: node of arguments
 *@op: array of options
+*@mult: multiple files
 */
-void show_op(Node_t *head, int *op)
+void show_op(Node_t *head, int *op, int mult)
 {
 	DIR *dir;
 	struct dirent *read;
 
 	dir = opendir(head->str);
+
+
+	if (mult == 1 && errno == 0)
+		printf("%s :\n", head->str);
 	if (dir != NULL)
 	{
 		read = readdir(dir);
@@ -57,8 +56,16 @@ void show_op(Node_t *head, int *op)
 			}
 			read = readdir(dir);
 		}
+		if (head->next != NULL || errno != 0)
+			printf("\n");
 	}
-	if (op[0] != 1)
+
+	if (errno != 0)
+	{
+		error_file(head->str);
+	}
+
+	if (op[0] != 1 && errno == 0)
 		printf("\n");
 
 	closedir(dir);

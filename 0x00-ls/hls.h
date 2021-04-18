@@ -11,7 +11,15 @@
 #include <grp.h>
 #include <stdint.h>
 #include <time.h>
-
+/**
+ * struct Node - singly linked list
+ * @str: string - (malloc'ed string)
+ * @len: length of the string
+ * @next: points to the next node
+ *
+ * Description: singly linked list node structure
+ * for Holberton project
+ */
 typedef struct Node
 {
 char *str;
@@ -29,13 +37,14 @@ Node_t *add_node(Node_t **head, const char *str);
 void free_list(Node_t *h);
 
 Node_t *count_flags(int argc, char const *argv[], int *op);
-void show_dir(Node_t *files,int *op);
-void show_op(Node_t *head, int *op);
+void show_dir(Node_t *files, int *op);
+void show_op(Node_t *head, int *op, int mult);
 void show_local(char *head, int *op);
-void condition_overload(struct dirent *read ,int *op);
+void condition_overload(struct dirent *read, int *op);
 void long_format(struct dirent *read);
 void print_1(char *read, int *op);
 
+void error_file(char const *cmd);
 
 
 
