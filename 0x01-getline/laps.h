@@ -18,6 +18,11 @@ typedef struct cars
 
 void race_state(int *id, size_t size);
 int check_car(cars_t *car, int id);
+cars_t *add_car(cars_t *head, int id);
+void get_stat(cars_t *car);
+void get_lap(cars_t *car, int id);
+
+
 
 
 #endif
