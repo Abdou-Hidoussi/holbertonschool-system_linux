@@ -89,9 +89,19 @@ void get_lap(cars_t *car, int id)
 void race_state(int *id, size_t size)
 {
 	static cars_t *car;
+	cars_t *new;
 
-	if (id == NULL)
+	if (size == 0)
+	{
+		while (car)
+		{
+			new = car;
+			car = car->next;
+			free(new);
+		}
+		free(car);
 		return;
+	}
 
 	for (size_t i = 0; i < size; i++)
 		get_lap(car, id[i]);
