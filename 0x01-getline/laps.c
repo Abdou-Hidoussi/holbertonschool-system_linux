@@ -90,6 +90,7 @@ void race_state(int *id, size_t size)
 {
 	static cars_t *car;
 	cars_t *new;
+	size_t i;
 
 	if (size == 0)
 	{
@@ -103,10 +104,10 @@ void race_state(int *id, size_t size)
 		return;
 	}
 
-	for (size_t i = 0; i < size; i++)
+	for (i = 0; i < size; i++)
 		get_lap(car, id[i]);
 
-	for (size_t i = 0; i < size; i++)
+	for (i = 0; i < size; i++)
 	{
 		if (check_car(car, id[i]))
 			car = add_car(car, id[i]);
