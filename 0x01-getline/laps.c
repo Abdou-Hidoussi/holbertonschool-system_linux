@@ -92,7 +92,7 @@ void race_state(int *id, size_t size)
 	cars_t *new;
 	size_t i;
 
-	if (size == 0)
+	if (size == 0 || id == NULL)
 	{
 		while (car)
 		{
