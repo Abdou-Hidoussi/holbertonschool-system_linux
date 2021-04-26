@@ -10,5 +10,7 @@
 
 char *_getline(const int fd);
 char *parse(char *buffer, int new_file);
+int _strlen(char *s);
+
 
 #endif
