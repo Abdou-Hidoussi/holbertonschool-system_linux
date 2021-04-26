@@ -1,5 +1,10 @@
 #include "_getline.h"
-
+/**
+ * parse - parse the lines.
+ *@buffer: the buffer to parse.
+ *@new_file: if its a new file
+ * Return: the line.
+ */
 char *parse(char *buffer, int new_file)
 {
 	static int first, last;
@@ -27,6 +32,11 @@ char *parse(char *buffer, int new_file)
 	first++;
 	return (line);
 }
+/**
+ * _getline - 0
+ *@fd: file .
+ * Return: the line.
+ */
 char *_getline(const int fd)
 {
 	static char *buffer;
@@ -45,7 +55,7 @@ char *_getline(const int fd)
 			count += strlen(tmp) + 1;
 		if (buffer[0] == '\000')
 			return (NULL);
-		return tmp;
+		return (tmp);
 	}
 	tmp = strdup(buffer);
 	tmp = parse(tmp, 0);
