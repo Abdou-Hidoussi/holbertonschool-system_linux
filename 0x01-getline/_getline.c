@@ -69,7 +69,7 @@ char *_getline(const int fd)
 		tmp = strdup(buffer);
 		tmp = parse(tmp, 1);
 		if (tmp != NULL)
-			count += strlen(tmp) + 1;
+			count += _strlen(tmp) + 1;
 		if (buffer[0] == '\000')
 			return (NULL);
 		return (tmp);
@@ -77,7 +77,7 @@ char *_getline(const int fd)
 	tmp = strdup(buffer);
 	tmp = parse(tmp, 0);
 	if (tmp != NULL)
-		count += strlen(tmp) + 1;
+		count += _strlen(tmp) + 1;
 
 	return (tmp);
 }
