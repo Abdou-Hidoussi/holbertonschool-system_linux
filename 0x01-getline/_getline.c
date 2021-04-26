@@ -1,47 +1,56 @@
 #include "_getline.h"
 
-char *parse(char *buffer)
+char *parse(char *buffer, int new_file)
 {
 	static int first, last;
 	char *line;
 	int count;
 
 	count = 0;
+	if (new_file)
+		last = 0;
 	first = last;
 	if (buffer[last] == '\000')
 	{
 		free(buffer);
-		return NULL;
+		return (NULL);
 	}
 	line = malloc(sizeof(char *) * READ_SIZE);
-	while (buffer[last] != '\n'&& buffer[last] != '\000')
+	while (buffer[last] != '\n' && buffer[last] != '\000')
 	{
 		last++;
-		count++;  
+		count++;
 	}
 
-	strncpy(line, buffer + first , count);
+	strncpy(line, buffer + first, count);
 	last++;
 	first++;
-	return line;
-	
+	return (line);
 }
 char *_getline(const int fd)
 {
 	static char *buffer;
 	char *tmp;
-	static int file;
+	static int file, count;
 
-	if (fd != file)
+	if (fd != file || count >= READ_SIZE)
 	{
 		file = fd;
 		buffer = malloc(sizeof(char *) * READ_SIZE);
 		read(fd, buffer, READ_SIZE);
-		if(buffer[0] == '\000')
-			return NULL;
-		
+		count = 0;
+		tmp = strdup(buffer);
+		tmp = parse(tmp, 1);
+		if (tmp != NULL)
+			count += strlen(tmp) + 1;
+		if (buffer[0] == '\000')
+			return (NULL);
+		return tmp;
 	}
 	tmp = strdup(buffer);
-	tmp = parse(tmp);    
-	return tmp;
+	tmp = parse(tmp, 0);
+	if (tmp != NULL)
+		count += strlen(tmp) + 1;
+
+	return (tmp);
 }

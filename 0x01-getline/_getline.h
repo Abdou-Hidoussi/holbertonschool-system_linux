@@ -7,7 +7,8 @@
 #include <string.h>
 
 #define READ_SIZE 1024
+
 char *_getline(const int fd);
-char *parse(char *buffer);
+char *parse(char *buffer, int new_file);
 
 #endif
