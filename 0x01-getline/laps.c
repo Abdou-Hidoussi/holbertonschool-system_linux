@@ -41,10 +41,13 @@ cars_t *add_car(cars_t *head, int id)
 	{
 		if (car->id > id)
 		{
-			befor->next = new;
+			if (befor)
+				befor->next = new;
+			else
+				befor = new;
 			new->next = car;
 			printf("Car %i joined the race\n", new->id);
-			return (head);
+			return (befor);
 		}
 		befor = car;
 		car = car->next;
