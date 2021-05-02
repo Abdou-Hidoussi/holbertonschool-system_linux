@@ -113,4 +113,5 @@ char *_getline(const int fd)
 		}
 		i++;
 	}
+	return (NULL);
 }
