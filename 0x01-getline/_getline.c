@@ -84,6 +84,8 @@ char *_getline(const int fd)
 	if (!file)
 	{
 		file = add_file(fd);
+		if (file == NULL)
+			return (NULL);
 		count = file;
 	}
 	else
