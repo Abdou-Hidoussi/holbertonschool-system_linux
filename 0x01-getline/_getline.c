@@ -1,44 +1,5 @@
 #include "_getline.h"
-/**
- * _strdup - duplicate a string
- * @str: the string to duplicate
- *
- * Return: string.
- */
-char *_strdup(char *str)
-{
-	char *p;
-	int i, j;
 
-
-	if (str == NULL)
-	{
-		return (NULL);
-	}
-
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-
-
-	p = malloc(i + 1 * sizeof(char));
-	if (p == NULL)
-	{
-		return (NULL);
-	}
-
-	j = 0;
-	while (j <= i)
-	{
-		p[j] = str[j];
-		j++;
-	}
-
-	return (p);
-}
 /**
 *_strncpy - 0
 *@dest: string
@@ -64,66 +25,92 @@ char *_strncpy(char *dest, char *src, int n)
 	return (dest);
 }
 /**
+ * add_file - create new file
+ *@fd: file .
+ * Return: the new file.
+ */
+file_struct_t *add_file(int fd)
+{
+	file_struct_t *file;
+
+	file = malloc(sizeof(file_struct_t));
+	file->fd = fd;
+	file->buffer = malloc(sizeof(char *) * READ_SIZE);
+	read(fd, file->buffer, READ_SIZE);
+	file->i = 0;
+	file->j = 0;
+	return (file);
+}
+/**
+ * free_file - free the static variables
+ *@h: head of the static variable .
+ *@f: file .
+ *@c: file .
+ * Return: always NULL
+ */
+char *free_file(file_struct_t *h, file_struct_t **f, file_struct_t **c)
+{
+	file_struct_t *next;
+
+	while (h != NULL)
+	{
+		next = (*h).next;
+		free((*h).buffer);
+		free(h);
+		if (next == NULL)
+			h = NULL;
+		else
+			h = next;
+	}
+	free(h);
+	free(next);
+	*f = NULL;
+	*c = NULL;
+	return (NULL);
+}
+/**
  * _getline - 0
  *@fd: file .
  * Return: the line.
  */
 char *_getline(const int fd)
 {
-	static list_t *head, *count;
-	static int file;
-	char *buffer, *new;
-	list_t *line;
-	int i = 0, j = 0;
+	static file_struct_t *file;
+	file_struct_t *count = file;
+	char *str;
+	int i, j;
 
-	if (fd != file)
+
+	if (!file)
 	{
-		file = fd;
-		buffer = malloc(sizeof(char *) * READ_SIZE);
-		read(fd, buffer, READ_SIZE);
-		line = malloc(sizeof(list_t));
-		head = line;
-		while (buffer[i])
-		{
-			if (buffer[i] == '\n' || buffer[i + 1] == '\000')
-			{
-				if (line->str)
-					line = line->next = malloc(sizeof(list_t));
-				line->str = malloc(sizeof(char *) * (i - j));
-				_strncpy(line->str, buffer + j, i - j + 1);
-				j = i + 1;
-			}
-			i++;
-		}
-		free(buffer);
-		count = head;
+		file = add_file(fd);
+		count = file;
 	}
 	else
 	{
-		if (head->next)
-			head = head->next;
-		else
+		while (count)
 		{
-			free_count(count);
-			return (NULL);
+			if (count->fd == fd)
+				break;
+			if (!count->next)
+				count->next = add_file(fd);
+			count = count->next;
 		}
 	}
-	new = _strdup(head->str);
-	return (new);
-}
-/**
- * free_count - free the linked list
- *@count: head of the list .
- */
-void free_count(list_t *count)
-{
-	list_t *line;
-
-	while (count)
+	i = count->i;
+	j = count->j;
+	if (count->buffer[i] == '\000' || fd == -1)
+		return (free_file(file, &file, &count));
+	while (count->buffer[i])
 	{
-		line = count->next;
-		free(count->str);
-		free(count);
-		count = line;
+		if (count->buffer[i] == '\n' || count->buffer[i + 1] == '\000')
+		{
+			str = malloc(sizeof(char *) * (i - j));
+			_strncpy(str, count->buffer + j, i - j + 1);
+			j = i + 1;
+			count->i = count->j = j;
+			return (str);
+		}
+		i++;
 	}
 }
