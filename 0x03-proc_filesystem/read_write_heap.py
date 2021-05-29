@@ -37,6 +37,7 @@ try:
     mem_file = open("/proc/{}/mem".format(pid), 'rb+')
 except PermissionError:
     print("{} must be run as Root".format(argv[0]))
+    maps_file.close()
     sys.exit(1)
 
 mem_file.seek(int(addr_start, 16))
