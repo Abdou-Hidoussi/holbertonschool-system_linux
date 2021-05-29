@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+Locates and replaces the first occurrence of a string in the heap
+of a process
+"""
 from os import close
 from sys import argv
 import sys
