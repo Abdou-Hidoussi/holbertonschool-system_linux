@@ -16,10 +16,10 @@
  */
 int main(void)
 {
-    assert(strlen(S1) == asm_strlen(S1));
-    assert(strlen(S2) == asm_strlen(S2));
-    assert(strlen(S3) == asm_strlen(S3));
+	assert(strlen(S1) == asm_strlen(S1));
+	assert(strlen(S2) == asm_strlen(S2));
+	assert(strlen(S3) == asm_strlen(S3));
 
-    printf("All good!\n");
-    return (EXIT_SUCCESS);
+	printf("All good!\n");
+	return (EXIT_SUCCESS);
 }
