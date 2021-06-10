@@ -12,8 +12,8 @@ asm_loop:
 	mov al, [rdi + R9]			; store the char of first argument + counter in al
 	mov bl, [rsi + R9]			; store the char of second argument + counter in ab
 
-    cmp R9, rdx                 ; compare counter to n
-    je asm_end                  ; return if true
+	cmp R9, rdx                 ; compare counter to n
+	je asm_end                  ; return if true
 
 	cmp al, bl					; compare the char + counter of first and second argument
 	je equal_char				; if equal jump to equal_char
@@ -29,13 +29,13 @@ equal_char:
 	jmp asm_loop				; loop again
 
 al_big:
-    inc R9                      ; increace counter
-    neg R9                      ; negate counter
+	inc R9                      ; increace counter
+	neg R9                      ; negate counter
 	mov R8, R9					; set return to - counter
 	jmp asm_end					; jmp to asm_end
 
 bl_big:
-    inc R9                      ; increace counter
+	inc R9                      ; increace counter
 	mov R8, R9					; set return to counter
 	jmp asm_end					; jmp to asm_end
 
