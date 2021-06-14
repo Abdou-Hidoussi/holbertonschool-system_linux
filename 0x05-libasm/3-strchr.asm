@@ -3,7 +3,7 @@ BITS 64
 global asm_strchr				; export to the gcc link
 
 asm_strchr:
-	push rbp					; push the base 
+	push rbp					; push the base
 	mov rbp, rsp				; start new base
 
 asm_loop:

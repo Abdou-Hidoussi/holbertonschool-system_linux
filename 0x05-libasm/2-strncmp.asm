@@ -3,7 +3,7 @@ BITS 64
 global asm_strncmp				; export to the gcc link
 
 asm_strncmp:
-	push rbp					; push the base 
+	push rbp					; push the base
 	mov rbp, rsp				; start new base
 
 	mov R8, 0h					; set return to 0
@@ -40,7 +40,7 @@ bl_big:
 	jmp asm_end					; jmp to asm_end
 
 asm_end:
-	mov rax, R8					; pass the counter to the return register 
+	mov rax, R8					; pass the counter to the return register
 	mov rsp, rbp				; return to old base
 	pop rbp						; pop to the call base
 	ret

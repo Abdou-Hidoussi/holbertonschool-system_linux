@@ -3,7 +3,7 @@ BITS 64
 global asm_strstr				; export to the gcc link
 
 asm_strstr:
-	push rbp					; push the base 
+	push rbp					; push the base
 	mov rbp, rsp				; start new base
 
     mov R9, 0h
