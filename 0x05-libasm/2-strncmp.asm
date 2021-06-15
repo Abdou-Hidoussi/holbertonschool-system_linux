@@ -17,6 +17,8 @@ asm_loop:
 
 	cmp al, bl					; compare the char + counter of first and second argument
 	je equal_char				; if equal jump to equal_char
+	jl al_big					; if al is bigger jump to al_big
+	jg bl_big					; if bl is bigger jump to bl_big
 
 equal_char:
 	cmp al, 0h					; compare al to Null
