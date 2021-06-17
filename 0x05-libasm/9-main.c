@@ -17,6 +17,14 @@
  */
 int main(void)
 {
+	printf("%d %d\n", strncasecmp(S1, S3, 1) , asm_strncasecmp(S1, S3, 1));
+	printf("%d %d\n", strncasecmp(S1, S2, 11) , asm_strncasecmp(S1, S2, 11));
+	printf("%d %d\n", strncasecmp(S1, S3, 11) , asm_strncasecmp(S1, S3, 11));
+	printf("%d %d\n", strncasecmp(S1, S2, 16) , asm_strncasecmp(S1, S2, 16));
+	printf("%d %d\n", strncasecmp(S1, S3, 16) , asm_strncasecmp(S1, S3, 16));
+	printf("%d %d\n", strncasecmp(S1, S4, 11) , asm_strncasecmp(S1, S4, 11));
+	printf("%d %d\n", strncasecmp(S1, S4, 16) , asm_strncasecmp(S1, S4, 16));
+
 	assert(strncasecmp(S1, S3, 1) == asm_strncasecmp(S1, S3, 1));
 	assert(strncasecmp(S1, S2, 11) == asm_strncasecmp(S1, S2, 11));
 	assert(strncasecmp(S1, S3, 11) == asm_strncasecmp(S1, S3, 11));
