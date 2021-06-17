@@ -1,6 +1,6 @@
 BITS 64
 
-global asm_strcasecmp				; export to the gcc link
+global asm_strcasecmp			; export to the gcc link
 
 asm_strcasecmp:
 	push rbp					; push the base
@@ -18,8 +18,6 @@ asm_loop:
 	cmp al, 90
 	jg nop_cap
 
-
-	
 	add al, 32
 
 compare:
@@ -37,7 +35,6 @@ compare:
 
 	jmp asm_end
 
-
 nop_cap:
 	cmp bl, 65
 	jl compare
@@ -46,13 +43,10 @@ nop_cap:
 	add bl, 32
 	jmp compare
 
-
 equal_char:
 	cmp al, 0h					; compare al to Null
 	mov R8, 0					; set return to 0 if true
 	je asm_end					; jmp to asm_end
-
-
 
 	inc R9						; increace counter
 	jmp asm_loop				; loop again
