@@ -13,38 +13,38 @@ asm_loop:
 	mov al, [rdi + R9]			; store the char of first argument + counter in al
 	mov bl, [rsi + R9]			; store the char of second argument + counter in ab
 
-    cmp al, 65
-    jl nop_cap
-    cmp al, 90
-    jg nop_cap
+	cmp al, 65
+	jl nop_cap
+	cmp al, 90
+	jg nop_cap
 
 
-    
-    add al, 32
+	
+	add al, 32
 
 compare:
 	cmp al, bl					; compare the char + counter of first and second argument
 	je equal_char				; if equal jump to equal_char
 
-    movzx R8, al
-    movzx rcx, bl
-    sub R8, rcx
+	movzx R8, al
+	movzx rcx, bl
+	sub R8, rcx
 
-    test R8, R8
-    jnz asm_end
-    test rcx, rcx
-    jz asm_end
+	test R8, R8
+	jnz asm_end
+	test rcx, rcx
+	jz asm_end
 
-    jmp asm_end
+	jmp asm_end
 
 
 nop_cap:
-    cmp bl, 65
-    jl compare
-    cmp bl, 90
-    jg compare
-    add bl, 32
-    jmp compare
+	cmp bl, 65
+	jl compare
+	cmp bl, 90
+	jg compare
+	add bl, 32
+	jmp compare
 
 
 equal_char:
@@ -58,15 +58,15 @@ equal_char:
 	jmp asm_loop				; loop again
 
 asm_end:
-    cmp R8, 32
-    je new_end
+	cmp R8, 32
+	je new_end
 	mov rax, R8					; pass the counter to the return register
 	mov rsp, rbp				; return to old base
 	pop rbp						; pop to the call base
 	ret
 
 new_end:
-    mov R8, 0h
+	mov R8, 0h
 	mov rax, R8					; pass the counter to the return register
 	mov rsp, rbp				; return to old base
 	pop rbp						; pop to the call base
