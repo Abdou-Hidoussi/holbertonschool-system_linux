@@ -2,6 +2,7 @@ BITS 64
 
 global asm_strcasecmp			; export to the gcc link
 
+
 asm_strcasecmp:
 	push rbp					; push the base
 	mov rbp, rsp				; start new base
