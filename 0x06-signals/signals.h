@@ -12,5 +12,6 @@ void (*current_handler_signal(void))(int);
 void print_hello(int sig);
 void set_print_hello(void);
 int handle_sigaction(void);
+void (*current_handler_sigaction(void))(int);
 
 #endif /* SIGNALS_H */
