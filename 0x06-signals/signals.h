@@ -17,5 +17,6 @@ int trace_signal_sender(void);
 int pid_exist(pid_t pid);
 void handler(int sig, siginfo_t *info, void *ucontext);
 void all_in_one(void);
+int sigset_init(sigset_t *set, int *signals);
 
 #endif /* SIGNALS_H */
