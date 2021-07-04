@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <signal.h>
-#include <unistd.h>
 /**
  * pid_exist - tests if a process exists, given its PID
  * @pid: process id
