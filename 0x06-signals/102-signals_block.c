@@ -10,11 +10,12 @@ int sigset_init(sigset_t *set, int *signals)
 	int i;
 
 	if (sigemptyset(set))
-		goto out;
-	for (i = 0; signals[i]; ++i)
+		return (0);
+	for (i = 0; signals[i]; i++)
+	{
 		if (sigaddset(set, signals[i]))
-out:
 			return (-1);
+	}
 	return (0);
 }
 /**
