@@ -8,7 +8,7 @@
  */
 int main(int argc, char **argv, char **env)
 {
-	char *args[] = {"/usr/bin/readelf", "-W", "-S", "", NULL};
+	char *args[] = {"/usr/bin/readelf", "-W", "-l", "", NULL};
 
 	(void)argc;
 	args[3] = argv[1];
