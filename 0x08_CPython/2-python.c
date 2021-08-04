@@ -31,13 +31,12 @@ void print_python_bytes(PyObject *p)
 	}
 
 	size = (((PyVarObject *)(p))->ob_size);
-	size = size > 9 ? 10 : size + 1;
 
 	s = (((PyBytesObject *)(p))->ob_sval);
 	printf("  size: %ld\n"
 	"  trying string: %s\n"
 	"  first %ld bytes:",
-	size, s, size);
+	size, s, size > 9 ? 10 : size + 1;);
 
 	for (i = 0; i <= size && i < 10; i++)
 		printf(" %02hhx", s[i]);
