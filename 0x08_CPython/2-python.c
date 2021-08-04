@@ -23,10 +23,10 @@ void print_python_bytes(PyObject *p)
 	Py_ssize_t size, i;
 	char *s;
 
-	puts("[.] bytes object info\n");
+	puts("[.] bytes object info");
 	if (!PyBytes_Check(p))
 	{
-		puts("  [ERROR] Invalid Bytes Object\n");
+		puts("  [ERROR] Invalid Bytes Object");
 		return;
 	}
 
