@@ -31,10 +31,10 @@ void print_python_bytes(PyObject *p)
 	}
 	size = PyBytes_Size(p);
     if (size < 10) 
-        size = 10;
+        size++;
     else
     {
-        size++;
+        size = 10;
     }
 	s = PyBytes_AsString(p);
 	printf("  size: %li\n"
