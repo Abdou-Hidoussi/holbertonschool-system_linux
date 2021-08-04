@@ -31,20 +31,20 @@ void print_python_bytes(PyObject *p)
 	}
 
 	size = PyBytes_Size(p);
-    if (size < 10) 
-        size++;
-    else
-    {
-        size = 10;
-    }
+	if (size < 10)
+		size++;
+	else
+	{
+		size = 10;
+	}
 
 	s = PyBytes_AsString(p);
 	printf("  size: %li\n"
 	"  trying string: %s\n"
 	"  first %li bytes:",
 	size, s, size);
-	
-    for (i = 0; i <= size && i < 10; i++)
+
+	for (i = 0; i <= size && i < 10; i++)
 		printf(" %02hhx", s[i]);
 	printf("\n");
 }
