@@ -32,7 +32,7 @@ void print_python_bytes(PyObject *p)
 
 	size = PyBytes_Size(p);
 	if (size < 10)
-		size++;
+		size += 1;
 	else
 	{
 		size = 10;
