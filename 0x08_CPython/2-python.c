@@ -34,7 +34,7 @@ void print_python_bytes(PyObject *p)
 	s = PyBytes_AsString(p);
 
 	printf("  size: %li\n", size);
-	printf("  trying string: %s\n", s)
+	printf("  trying string: %s\n", s);
 	if (size < 10)
 		size += 1;
 	else
