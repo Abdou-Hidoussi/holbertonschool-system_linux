@@ -36,7 +36,7 @@ void print_python_bytes(PyObject *p)
 	printf("  size: %ld\n"
 	"  trying string: %s\n"
 	"  first %ld bytes:",
-	size, s, size > 9 ? 10 : size + 1;);
+	size, s, size < 10 ? size + 1 : 10);
 
 	for (i = 0; i <= size && i < 10; i++)
 		printf(" %02hhx", s[i]);
