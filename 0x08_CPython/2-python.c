@@ -15,17 +15,15 @@ void print_python_bytes(PyObject *p)
 		puts("  [ERROR] Invalid Bytes Object");
 		return;
 	}
-
-	size = (((PyVarObject *)(p))->ob_size);
-	s = (((PyBytesObject *)(p))->ob_sval);
-
-	printf("  size: %ld\n", size);
-	printf("  trying string: %s\n", s);
-	printf("  first %ld bytes:", size < 10 ? size + 1 : 10);
-
-	for (i = 0; i <= size && i < 10; i++)
+	size = PyBytes_Size(p);
+	s = PyBytes_AsString(p);
+	printf("  size: %li\n"
+			"  trying string: %s\n"
+			"  first %li bytes:",
+			size, s, size < 10 ? size + 1 : 10);
+	for (i = 0; i <= size && i < 10; ++i)
 		printf(" %02hhx", s[i]);
-	printf("\n");
+	putchar('\n');
 }
 
 /**
