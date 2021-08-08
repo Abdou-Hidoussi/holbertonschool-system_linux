@@ -18,7 +18,7 @@ void print_python_int(PyObject *p)
 
 	num = ((PyLongObject *)(p))->ob_digit;
 	size = ((PyVarObject *)(p))->ob_size;
-    pos = abs(size);
+	pos = abs(size);
 
 
 	if (pos > 3 || (pos == 3 && num[2] > 15))
