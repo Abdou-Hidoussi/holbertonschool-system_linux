@@ -1,6 +1,4 @@
 #include <Python.h>
-#include <object.h>
-#include <unicodeobject.h>
 #include <stdio.h>
 /**
  * print_python_string - prints some basic info about Python lists
