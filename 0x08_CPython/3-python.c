@@ -46,7 +46,7 @@ void print_python_bytes(PyObject *p)
 	printf("  first %ld bytes: ", size);
 
 	for (i = 0; i < size; i++)
-		printf("%02hhx%c", s[i], i < size - 1 ? ' ' : '\n');
+		printf("%02hhx%c", s[i], i < size ? ' ' : '\n');
 }
 
 /**
